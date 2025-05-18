@@ -1,0 +1,30 @@
+{
+    "name": "Gestor de Finanzas Pro",
+    "short_name": "FinanzasPro",
+    "description": "Gestor personal de ingresos y gastos para un control financiero eficiente.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#1a1a1a",
+    "theme_color": "#c0392b",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "imagenes/ahorro.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "imagenes/contabilidad.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "imagenes/ingresos.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ]
+}

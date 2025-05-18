@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Finanzas Pro</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- PWA Manifest y Metas -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#c0392b"> 
+    <link rel="apple-touch-icon" href="C:\Users\aluqu\OneDrive\Escritorio\contabilidad domestica\imagenes\ingresos.png"> 
+
+    <!-- Librerías Externas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gestor de Finanzas Pro</h1>
+    </header>
+
+    <main>
+        <section id="resumenes-section">
+            <h2>Resúmenes Financieros</h2>
+            <div class="resumen-container">
+                <div class="resumen-card">
+                    <h3>Mes Actual</h3>
+                    <p>Ingresos: <span id="ingresos-mes" class="ingreso-color">€0.00</span></p>
+                    <p>Gastos: <span id="gastos-mes" class="gasto-color">€0.00</span></p>
+                    <p>Balance: <span id="balance-mes">€0.00</span></p>
+                    <div class="grafico-container">
+                        <canvas id="grafico-categorias-mes"></canvas>
+                    </div>
+                    <div class="categorias-resumen">
+                        <h4>Desglose Detallado (Mes):</h4>
+                        <ul id="categorias-resumen-mes"></ul>
+                    </div>
+                </div>
+                <div class="resumen-card">
+                    <h3>Año Actual</h3>
+                    <p>Ingresos: <span id="ingresos-ano" class="ingreso-color">€0.00</span></p>
+                    <p>Gastos: <span id="gastos-ano" class="gasto-color">€0.00</span></p>
+                    <p>Balance: <span id="balance-ano">€0.00</span></p>
+                    <div class="grafico-container">
+                        <canvas id="grafico-categorias-ano"></canvas>
+                    </div>
+                    <div class="categorias-resumen">
+                        <h4>Desglose Detallado (Año):</h4>
+                        <ul id="categorias-resumen-ano"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="balance-section">
+            <h2>Balance General</h2>
+            <p id="balance-actual">€0.00</p>
+            <div class="resumen-ingresos-gastos">
+                <div>
+                    <h4>Ingresos Totales</h4>
+                    <p id="total-ingresos" class="ingreso-color">€0.00</p>
+                </div>
+                <div>
+                    <h4>Gastos Totales</h4>
+                    <p id="total-gastos" class="gasto-color">€0.00</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="nueva-transaccion-section">
+            <h2 id="form-title">Añadir Nueva Operación</h2>
+            <form id="form-transaccion">
+                <input type="hidden" id="transaccion-id">
+                <div>
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" required>
+                </div>
+                <div class="tipo-transaccion-selector">
+                    <label>Tipo de Transacción:</label>
+                    <div>
+                        <input type="radio" id="tipo-ingreso" name="tipo_transaccion" value="ingreso" checked>
+                        <label for="tipo-ingreso" class="radio-label">Ingreso</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="tipo-gasto" name="tipo_transaccion" value="gasto">
+                        <label for="tipo-gasto" class="radio-label">Gasto</label>
+                    </div>
+                </div>
+                <div>
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" id="descripcion" placeholder="Ej: Nómina de Enero" required>
+                </div>
+                <div>
+                    <label for="monto">Monto (€)</label>
+                    <input type="number" id="monto" step="0.01" placeholder="Ej: 1500 o 25.50" required>
+                </div>
+                <div>
+                    <label for="categoria">Categoría</label>
+                    <select id="categoria" required>
+                        <!-- Opciones se cargarán dinámicamente -->
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn" id="submit-btn">Añadir Transacción</button>
+                    <button type="button" class="btn btn-cancel" id="cancel-edit-btn" style="display:none;">Cancelar Edición</button>
+                </div>
+            </form>
+        </section>
+        
+        <section id="transacciones-section">
+            <h2>Historial de Transacciones</h2>
+            <div class="acciones-historial">
+                <button class="btn-accion-historial" id="seleccionar-todas-btn">Seleccionar Todas</button>
+                <button class="btn-accion-historial" id="deseleccionar-todas-btn">Deseleccionar Todas</button>
+                <button class="btn-accion-historial btn-descargar-pdf" id="descargar-pdf-btn">Descargar Reporte PDF</button>
+            </div>
+            <ul id="lista-transacciones">
+                <!-- Los ítems se generan aquí -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year">2025</span> Alejandro Luque-Desarrollador de Aplicaciones Web</p>
+    </footer>
+
+    <script src="script.js"></script> 
+</body>
+</html>
