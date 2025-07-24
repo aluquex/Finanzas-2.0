@@ -1,4 +1,4 @@
-💰 Finanzas 2.0
+
 
 **Finanzas 2.0** es una aplicación web progresiva para la gestión de finanzas personales. Permite llevar el control de ingresos, gastos y balances mensuales y anuales de forma sencilla, visual y eficiente.
 
