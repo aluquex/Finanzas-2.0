@@ -1,6 +1,8 @@
 
 
-**Finanzas 2.0** es una aplicación web progresiva para la gestión de finanzas personales. Permite llevar el control de ingresos, gastos y balances mensuales y anuales de forma sencilla, visual y eficiente.
+Finanzas 2.0 es una Progressive Web Application (PWA) desarrollada con JavaScript, enfocada en la gestión de finanzas personales.  
+La aplicación implementa persistencia local, funcionamiento offline mediante Service Workers y generación de informes en PDF, ofreciendo una solución ligera y funcional para el control financiero personal.
+
 
 🚀 Funcionalidades principales
 
